@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: bisque;
+}
+
+.title {
+    padding: 3rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#map {
+    width: 75rem;
+    height: 40rem;
+}
+
+.updates {
+  padding-top: 3rem;
+}
+
+/*  */
+
+.popup-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.electoral-votes {
+    display: flex;
+    flex-direction: row;
+}
+
+.trump {
+    height: 40px;
+    display: flex;
+    gap: 1rem;
+    background-color: #FFD6D9;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trump p {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+
+.harris {
+  height: 40px;
+  display: flex;
+  gap: 1rem;
+  background-color: #B9DCF8;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.harris p {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+/*  */
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 0.5rem 0;
+  z-index: 1000;
+}
