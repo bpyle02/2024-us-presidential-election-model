@@ -60,7 +60,7 @@ map.on('load', async () => {
         'filter': ['==', 'name', ''] // Start with no state selected
     });
 
-    resultsStates = await getStatesResults();
+    resultsStates = await getStatesResults(selectedFile);
 
     map.on('sourcedata', getSourceData);
 
@@ -102,10 +102,21 @@ function findFirstSymbolLayer() {
     return firstSymbolId;
 }
 
-async function getStatesResults() {
-    const response = await fetch("./data.json");
+async function getStatesResults(selectedFile) {
+    console.log("Updating map..")
+    console.log(`/data/${selectedFile}`)
+    const response = await fetch(`/get_file_contents?file_name=${selectedFile}`);
     const data = await response.json();
     return data;
+}
+
+async function updateMapWithNewData(selectedFile) {   
+    resultsStates = await getStatesResults(selectedFile);
+
+    await updatePolygonFeatures();
+
+    map.triggerRepaint();
+    map.redraw();
 }
 
 async function getSourceData(e) {
@@ -303,3 +314,36 @@ function showInfo(e, feature, map, popup) {
         .setHTML(html)
         .addTo(map);
 }
+
+fetch('/get_filenames')
+    .then(response => response.json())
+    .then(data => {
+        const dropdown = document.getElementById('fileDropdown');
+        selectedFile = data[0]
+        data.forEach(filename => {
+            const option = document.createElement('option');
+            option.value = filename;
+            option.textContent = filename;
+            dropdown.appendChild(option);
+        });
+
+        // Trigger the map update for the initially selected file
+        if (selectedFile) {
+            updateMapWithNewData(selectedFile).catch(error => console.error('Error fetching initial data:', error));
+        }
+    })
+    .catch(error => console.error('Error fetching filenames:', error));
+
+
+// Listen for dropdown change and update data
+document.getElementById('fileDropdown').addEventListener('change', async function() {
+    selectedFile = this.value;
+
+    if (selectedFile) {
+        try {
+            await updateMapWithNewData(selectedFile);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+});

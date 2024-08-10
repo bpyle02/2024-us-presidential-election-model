@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandon's 2024 Election Model</title>
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.min.js"></script>
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+
+  <body>
+
+    <div class="header">
+      <nav>
+          <a href="https://brandonpyle.com">Portfolio</a>
+          <a href="/updates.html">Updates</a>
+      </nav>
+    </div>
+
+    <div class="wrapper">
+      <h1 class="title">Brandon Pyle's 2024 Election Model</h1>
+      
+      <div id="map"></div>
+
+      <div class="electoral-votes-wrapper">
+        <div class="electoral-votes-names">
+          <div>Trump - </div>
+          <div>Harris - </div>
+        </div>
+        <div class="electoral-votes-bar">
+
+        </div>
+      </div>
+
+      <select id="fileDropdown">
+        <option value="">Select a file</option>
+      </select>
+    </div>
+
+    <div class="footer">
+      <p>&copy; Brandon Pyle 2024 | 
+        <a href="https://brandonpyle.com" target="_blank">Website</a> | 
+        <a href="https://github.com/bpyle02" target="_blank">Github</a></p>
+    </div>
+
+    <script src="/static/app.js"></script>
+
+  </body>
+
+</html>
