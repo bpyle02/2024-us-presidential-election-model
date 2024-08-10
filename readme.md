@@ -1,0 +1,2 @@
+# 2024 Presidential Election Model
+This is a website I created to display an interactive map of each state and my election model's prediction of which candidate will win it and by how much. Check out the website [here](https://election-model.brandonpyle.com/)
